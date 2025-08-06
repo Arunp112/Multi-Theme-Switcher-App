@@ -3,18 +3,18 @@ import Card from "../components/Card";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true); // 👈 Add loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((data) => {
         setProducts(data);
-        setLoading(false); // 👈 Stop loading when data arrives
+        setLoading(false);
       })
       .catch((error) => {
         alert("Error")
-        setLoading(false)}); // 👈 Stop loading on error
+        setLoading(false)});
   }, []);
 
   return (
@@ -23,7 +23,6 @@ const Home = () => {
         🛍️ Fake Store Products
       </h1>
 
-      {/* 👇 Loader */}
       {loading ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {Array.from({ length: 6 }).map((_, i) => (

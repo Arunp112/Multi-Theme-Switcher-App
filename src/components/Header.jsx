@@ -1,7 +1,9 @@
 import { useContext, useState } from "react";
 import { ThemeContext } from "../contexts/ThemeContext";
 import { Link } from "react-router-dom";
-import clsx from "clsx"; // optional: for cleaner class toggling
+import clsx from "clsx";
+import { CiMenuBurger } from "react-icons/ci";
+import { IoMdClose } from "react-icons/io"; 
 
 const links = [
   { label: "Home", to: "/" },
@@ -52,10 +54,10 @@ const Header = () => {
         {!isOpen && (
           <button
             aria-label="Open menu"
-            className="md:hidden text-2xl z-50 relative"
+            className="md:hidden text-2xl z-50 relative text-black dark:text-white"
             onClick={() => setIsOpen(true)}
           >
-            ☰
+          <CiMenuBurger/>
           </button>
         )}
       </div>
@@ -70,17 +72,17 @@ const Header = () => {
         <div className="flex flex-col p-4 space-y-4">
           <button
             aria-label="Close menu"
-            className="self-end text-2xl"
+            className="self-end text-2xl text-black dark:text-white"
             onClick={() => setIsOpen(false)}
           >
-            ✕
+            <IoMdClose/>
           </button>
           {links.map(({ label, to }) => (
             <Link
               key={to}
               to={to}
               onClick={() => setIsOpen(false)}
-              className="block hover:underline"
+              className="block hover:underline text-black dark:text-white"
             >
               {label}
             </Link>
